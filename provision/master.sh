@@ -1,6 +1,6 @@
 IPADDR=`ifconfig enp0s8 | grep -i Mask | awk '{print $2}'| cut -f2 -d:`
 NODENAME=$(hostname -s)
-sudo kubeadm init --apiserver-cert-extra-sans=$IPADDR --apiserver-advertise-address=$IPADDR --node-name $NODENAME
+sudo kubeadm init --apiserver-cert-extra-sans=$IPADDR --apiserver-advertise-address=$IPADDR --pod-network-cidr=10.0.0.0/24 --node-name $NODENAME
 sudo kubeadm token create --print-join-command > /vagrant/kubeadm_join.sh
 sudo chown $(id -u):$(id -g) /vagrant/kubeadm_join.sh
 sudo sysctl net.bridge.bridge-nf-call-iptables=1
