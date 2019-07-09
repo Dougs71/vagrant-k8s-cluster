@@ -1,4 +1,4 @@
-NODES = 1
+NODES = 3
 BOX = "ubuntu/xenial64"    
 
 Vagrant.configure("2") do |config|
