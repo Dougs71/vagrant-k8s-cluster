@@ -1,4 +1,5 @@
-sudo apt-get update && apt-get install -y apt-transport-https curl
+sudo ufw disable
+sudo apt-get update && sudo apt-get install -y apt-transport-https curl
 sudo apt-get install -y docker.io
 sudo systemctl start docker
 sudo systemctl enable docker

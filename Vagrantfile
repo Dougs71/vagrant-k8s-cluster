@@ -6,7 +6,6 @@ Vagrant.configure("2") do |config|
     config.vm.box = BOX
     config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
     config.ssh.insert_key = false
-    config.ssh.private_key_path = ['provision/vagrant']
   
     config.vm.define "master" do |master|
       master.vm.hostname = "master"
