@@ -1,2 +1,3 @@
 .vagrant
 *.log
+kubeadm_join.sh

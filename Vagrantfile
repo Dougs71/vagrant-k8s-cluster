@@ -1,6 +1,5 @@
 NODES = 1
 BOX = "ubuntu/xenial64"    
-ROLE = ""
 
 Vagrant.configure("2") do |config|
   config.vbguest.auto_update = false
@@ -11,7 +10,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "master" do |master|
     master.vm.hostname = "master"
-    master.vm.network "public_network"
+    master.vm.network "private_network", ip: "10.0.0.1", netmask: "255.255.255.0", auto_config: true
 
     config.vm.provider "virtualbox" do |vb|
       vb.name = "master"
@@ -25,7 +24,7 @@ Vagrant.configure("2") do |config|
   (1..NODES).each do |node_id|
     config.vm.define "node#{node_id}" do |node|
       node.vm.hostname = "node#{node_id}"
-      node.vm.network "public_network"
+      node.vm.network "private_network", ip: "10.0.0.#{node_id+1}", netmask: "255.255.255.0", auto_config: true
 
       node.vm.provider "virtualbox" do |vb|
         vb.name = "node#{node_id}"
