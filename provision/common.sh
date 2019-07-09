@@ -1,4 +1,6 @@
 sudo ufw disable
+swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 sudo apt-get update && sudoapt-get install -y apt-transport-https curl
 sudo apt-get install -y docker.io
 sudo systemctl start docker
